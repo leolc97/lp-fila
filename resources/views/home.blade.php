@@ -1,0 +1,4 @@
+<div>
+    @livewire('carousel')
+
+</div>
