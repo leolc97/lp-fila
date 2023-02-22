@@ -16,17 +16,13 @@ return new class extends Migration {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Event::class);
-            $table->tinyInteger('batch_number')->unsigned()->default(1);
+            $table->tinyInteger('batch')->default(1);
             $table->string('title');
             $table->string('description')->nullable();
-            $table->decimal('price', 13, 2);
             $table->integer('quantity');
-            $table->boolean('status')->default(false);
             $table->integer('customer_limit')->default(5);
-            $table->enum('batch_type', ['date', 'tickets', 'normal'])->default('normal');
             $table->enum('gender', ['male', 'female', 'unisex'])->default('unisex');
-            $table->datetime('limit_date')->nullable();
-            $table->integer('limit_tickets')->nullable();
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

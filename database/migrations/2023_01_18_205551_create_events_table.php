@@ -21,7 +21,11 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->dateTime('start_date');
             $table->dateTime('end_date')->nullable();
+            $table->dateTime('start_date_sale');
+            $table->dateTime('end_date_sale')->nullable();
             $table->enum('status', ['draft', 'published', 'cancelled'])->default('draft');
+            $table->tinyInteger('batch_quantity')->default(1);
+            $table->enum('batch_turn', ['batch', 'ticket'])->default('batch');
             $table->boolean('featured')->default(true);
             $table->string('banner_image')->nullable();
             $table->string('thumbnail_image')->nullable();

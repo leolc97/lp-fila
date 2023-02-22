@@ -10,6 +10,8 @@
     :hint-icon="$getHintIcon()"
     :required="$isRequired()"
     :state-path="$getStatePath()"
+    :batch="$getBatch()"
+
 >
     @php
         $containers = $getChildComponentContainers();
@@ -63,6 +65,14 @@
                     class="gap-6"
                 >
                     @foreach ($containers as $uuid => $item)
+                        @php
+                        $id = data_get($item->getLivewire(), "{$item->getStatePath()}.ticket_batch");
+                        $batchId= $getBatch();
+                        if($id !== $batchId){
+                            continue;
+                        }
+                        @endphp
+
                         <li
                             x-data="{
                                 isCollapsed: @js($isCollapsed()),
