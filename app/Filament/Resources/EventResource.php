@@ -42,13 +42,14 @@ class EventResource extends Resource
     protected static ?string $recordTitleAttribute = 'title'; // global search
     protected static ?string $navigationLabel = 'Eventos';
 
+    protected static ?string $navigationGroup = 'Eventos';
+
+    protected static ?int $navigationSort = 1;
+
     protected static function getNavigationBadge(): ?string
     {
         return static::getModel()::count(); //arrumar pra eventos ativos
     }
-
-//    protected static ?int $navigationSort = 2;
-
 
     public static function form(Form $form): Form
     {
@@ -83,8 +84,10 @@ class EventResource extends Resource
                         'success' => 'published',
                     ]),
                 Tables\Columns\IconColumn::make('featured')
+                    ->label("Destacado")
                     ->boolean(),
-                Tables\Columns\ImageColumn::make('banner_image'),
+                Tables\Columns\ImageColumn::make('banner_image')
+                ->label('Imagem'),
 //                Tables\Columns\ImageColumn::make('thumbnail_image'),
 //                Tables\Columns\TextColumn::make('offline_payment_info'),
 //                Tables\Columns\TextColumn::make('deleted_at')
@@ -227,7 +230,6 @@ class EventResource extends Resource
                             Forms\Components\DateTimePicker::make('start_date')
                                 ->columnSpan(1)
                                 ->withoutSeconds()
-                                ->minDate(now())
                                 ->reactive()
                                 ->required()
                                 ->label('Data de início'),
@@ -259,7 +261,6 @@ class EventResource extends Resource
                                 ->required()
                                 ->reactive()
                                 ->withoutSeconds()
-                                ->minDate(now())
                                 ->columnSpan(1)
                                 ->label('Quando os ingressos começaram a serem vendidos'),
                             Forms\Components\DateTimePicker::make('end_date_sale')

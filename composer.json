@@ -8,6 +8,8 @@
         "php": "^8.0.2",
         "cheesegrits/filament-google-maps": "^1.0",
         "filament/filament": "^2.0",
+        "filament/notifications": "^2.0",
+        "filament/spatie-laravel-settings-plugin": "^2.0",
         "flowframe/laravel-trend": "^0.1.1",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
@@ -68,7 +70,8 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "pestphp/pest-plugin": true
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
         }
     },
     "minimum-stability": "stable",
